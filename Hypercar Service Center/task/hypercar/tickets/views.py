@@ -4,4 +4,5 @@ from django.http.response import HttpResponse
 
 class WelcomeView(View):
     def get(self, request, *args, **kwargs):
-        return HttpResponse('')
+        html = '<h2>Welcome to the Hypercar Service!</h2>'
+        return HttpResponse(html)
