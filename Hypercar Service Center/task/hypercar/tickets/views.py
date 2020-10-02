@@ -18,16 +18,6 @@ class MenuView(View):
 
 class TicketView(View):
     def get(self, request, task, *args, **kwargs):
-        '''
-        max_id = Ticket.objects.order_by('-ticket_id')
-        if not max_id:
-            max_id = 0
-        else:
-            print('somethin')
-            print(max_id)
-            max_id = max_id[0].ticket_id
-        print(f'max_id: {max_id}')
-        '''
 
         open_tickets = Ticket.objects.filter(open_status=True)
         open_oil = open_tickets.filter(type='OIL').count()
@@ -50,3 +40,12 @@ class TicketView(View):
         new_id = new_ticket.ticket_id
         context = {'ticket_id': new_id, 'wait_time': wait_time}
         return render(request, 'tickets/ticket.html', context=context)
+
+class OperatorView(View):
+    def get(self, request, *args, **kwargs):
+        open_tickets = Ticket.objects.filter(open_status=True)
+        open_oil = open_tickets.filter(type='OIL').count()
+        open_tires = open_tickets.filter(type='TIR').count()
+        open_diag = open_tickets.filter(type='DIA').count()
+
+        return render(request, 'tickets/menu.html')
