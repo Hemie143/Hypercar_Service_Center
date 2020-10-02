@@ -14,11 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from tickets.views import WelcomeView, MenuView, Ticket
-
+from tickets.views import WelcomeView, MenuView, TicketView
+from tickets.models import Ticket
 
 urlpatterns = [
     path('welcome/', WelcomeView.as_view()),
-    path('menu/', MenuView.as_view())
-    path('get_ticket/<str:ticket>/', TicketView.as_view())
+    path('menu/', MenuView.as_view()),
+    path('get_ticket/<str:task>/', TicketView.as_view()),
 ]
+
+# Truncate tickets table when Application starts
+Ticket.objects.all().delete()
