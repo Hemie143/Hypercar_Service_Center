@@ -12,3 +12,8 @@ class WelcomeView(View):
 class MenuView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'tickets/menu.html')
+
+
+class MenuView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'tickets/ticket.html')
