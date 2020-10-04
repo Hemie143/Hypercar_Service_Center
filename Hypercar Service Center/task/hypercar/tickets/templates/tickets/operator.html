@@ -5,9 +5,9 @@
     <title>Operator</title>
 </head>
 <body>
-    <div>Change oil queue: 3</div>
-    <div>Inflate tires queue: 4</div>
-    <div>Get diagnostic queue: 1</div>
+    <div>Change oil queue: {{ open_oil }}</div>
+    <div>Inflate tires queue: {{ open_tires }}</div>
+    <div>Get diagnostic queue: {{ open_diag }}</div>
 
     <form method="post">{% csrf_token %}
       <button type="submit">Process next</button>

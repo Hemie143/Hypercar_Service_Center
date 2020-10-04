@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if id == 0 %}
+    <div>Waiting for the next client</div>
+{% else %}
+    <div>Next ticket #{{ id }}</div>
+{% endif %}
+</body>
+</html>

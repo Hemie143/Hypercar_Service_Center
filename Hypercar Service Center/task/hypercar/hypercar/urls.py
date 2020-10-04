@@ -15,16 +15,18 @@ Including another URLconf
 """
 from django.urls import path
 from django.views.generic import RedirectView
-from tickets.views import WelcomeView, MenuView, TicketView, OperatorView
+from tickets.views import WelcomeView, MenuView, TicketView, OperatorView, NextView
 from tickets.models import Ticket
 
 urlpatterns = [
     path('welcome/', WelcomeView.as_view()),
     path('menu/', MenuView.as_view()),
     path('get_ticket/<str:task>/', TicketView.as_view()),
-    path('processing', OperatorView.as_view())
+    path('processing', OperatorView.as_view()),
     path('processing/', RedirectView.as_view(url='/processing')),
+    path('next/', NextView.as_view())
 ]
 
 # Truncate tickets table when Application starts
+# Required for the tests, but removes persistence...
 Ticket.objects.all().delete()
